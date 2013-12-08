@@ -15,7 +15,7 @@ function Symbol(chart, options, symbol) {
   if (options.target) { this.text.attr('target', options.target); }
   if (chart.options.maxWidth) {
     // using this approach: http://stackoverflow.com/a/3153457/22466
-    var maxWidth = chart.options.maxWidth;
+    var maxWidth = this.chart.options.symbols[this.symbolType].maxWidth || this.chart.options.maxWidth;
     var words = options.text.split(' ');
     var tempText = "";
     for (var i=0, ii=words.length; i<ii; i++) {
