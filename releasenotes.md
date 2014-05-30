@@ -1,3 +1,29 @@
+### v1.2.11
+
+- Added node id to objects [#18](https://github.com/adrai/flowchart.js/pull/18) thanks to [billcavalieri](https://github.com/billcavalieri)
+
+### v1.2.10
+
+- fix direction changes [#15](https://github.com/adrai/flowchart.js/issues/15)
+
+### v1.2.9
+
+- try to optimize handle directions on other symbols too [#15](https://github.com/adrai/flowchart.js/issues/15)
+- added more font options (font, font-family, font-weight)
+
+### v1.2.8
+
+- try to handle directions on other symbols too [#15](https://github.com/adrai/flowchart.js/issues/15)
+
+### v1.2.7
+
+- merge [#12](https://github.com/adrai/flowchart.js/pull/12)
+- fixed subroutine
+
+### v1.2.6
+
+- added a maxWidth option for the chart [#10](https://github.com/adrai/flowchart.js/pull/10)
+
 ### v1.2.5
 
 - different styles for different symbol types [#9](https://github.com/adrai/flowchart.js/issues/9)

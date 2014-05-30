@@ -29,7 +29,7 @@ and then
                                 '' +
                                 'st->op1->cond\n' + 
                                 'cond(yes)->io->e\n' + // conditions can also be redirected like cond(yes, bottom) or cond(yes, right)
-                                'cond(no)->sub1->op1');
+                                'cond(no)->sub1(right)->op1');// the other symbols too...
   diagram.drawSVG('diagram');
 
   // you can also try to pass options:
@@ -61,7 +61,7 @@ Many thanks to [js-sequence-diagrams](http://bramp.github.io/js-sequence-diagram
 
 #Licence
 
-Copyright (c) 2013 Adriano Raiano
+Copyright (c) 2014 Adriano Raiano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

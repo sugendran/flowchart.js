@@ -4,7 +4,7 @@ function Subroutine(chart, options) {
   Symbol.call(this, chart, options, symbol);
 
   symbol.attr({
-    width: this.text.getBBox().width + 4 * this.chart.options.symbols[this.symbolType]['text-margin'] || this.chart.options['text-margin']
+    width: this.text.getBBox().width + 4 * (this.chart.options.symbols[this.symbolType]['text-margin'] || this.chart.options['text-margin'])
   });
 
   this.text.attr({
@@ -20,6 +20,16 @@ function Subroutine(chart, options) {
     height: this.text.getBBox().height + 2 * (this.chart.options.symbols[this.symbolType]['text-margin'] || this.chart.options['text-margin']),
     fill: (this.chart.options.symbols[this.symbolType]['fill'] || this.chart.options['fill'])
   });
+  if (options.key) { innerWrap.node.id = options.key + 'i'; }
+
+  var font = (this.chart.options.symbols[this.symbolType]['font'] || this.chart.options['font']);
+  var fontF = (this.chart.options.symbols[this.symbolType]['font-family'] || this.chart.options['font-family']);
+  var fontW = (this.chart.options.symbols[this.symbolType]['font-weight'] || this.chart.options['font-weight']);
+
+  if (font) innerWrap.attr({ 'font': font });
+  if (fontF) innerWrap.attr({ 'font-family': fontF });
+  if (fontW) innerWrap.attr({ 'font-weight': fontW });
+
   if (options.link) { innerWrap.attr('href', options.link); }
   if (options.target) { innerWrap.attr('target', options.target); }
   this.group.push(innerWrap);

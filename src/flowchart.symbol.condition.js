@@ -4,16 +4,16 @@ function Condition(chart, options) {
 
   this.yes_direction = 'bottom';
   this.no_direction = 'right';
-  if (options.yes && options.yes.direction && options.no && !options.no.direction) {
-    if (options.yes.direction === 'right') {
+  if (options.yes && options['direction_yes'] && options.no && !options['direction_no']) {
+    if (options['direction_yes'] === 'right') {
       this.no_direction = 'bottom';
       this.yes_direction = 'right';
     } else {
       this.no_direction = 'right';
       this.yes_direction = 'bottom';
     }
-  } else if (options.yes && !options.yes.direction && options.no && options.no.direction) {
-    if (options.no.direction === 'right') {
+  } else if (options.yes && !options['direction_yes'] && options.no && options['direction_no']) {
+    if (options['direction_no'] === 'right') {
       this.yes_direction = 'bottom';
       this.no_direction = 'right';
     } else {
@@ -62,6 +62,7 @@ function Condition(chart, options) {
   });
   if (options.link) { symbol.attr('href', options.link); }
   if (options.target) { symbol.attr('target', options.target); }
+  if (options.key) { symbol.node.id = options.key; }
 
   this.text.attr({
     y: symbol.getBBox().height/2

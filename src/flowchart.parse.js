@@ -92,13 +92,14 @@ function parse(input) {
 
   var lines = [];
   var prevBreak = 0;
-  for(var i=1, ii = input.length; i<ii; i++) {
-    if(input[i] === '\n' && input[i-1] !== '\\') {
-      var line = input.substring(prevBreak, i);
-      prevBreak = i + 1;
-      lines.push(line.replace(/\\\n/g, '\n'));
+  for (var i0 = 1, i0len = input.length; i0 < i0len; i0++) {
+    if(input[i0] === '\n' && input[i0 - 1] !== '\\') {
+      var line0 = input.substring(prevBreak, i0);
+      prevBreak = i0 + 1;
+      lines.push(line0.replace(/\\\n/g, '\n'));
     }
   }
+
   if(prevBreak < input.length) {
     lines.push(input.substr(prevBreak));
   }
@@ -130,6 +131,11 @@ function parse(input) {
     var endIndex = s.indexOf(')');
     if (startIndex >= 0 && endIndex >= 0) {
       next = flowSymb.substring(startIndex, endIndex);
+      if (next.indexOf(',') < 0) {
+        if (next !== 'yes' && next !== 'no') {
+          next = 'next, ' + next;
+        }
+      }
     }
     return next;
   }
@@ -190,7 +196,7 @@ function parse(input) {
         var realSymb = getSymbol(flowSymb);
         var next = getNextPath(flowSymb);
 
-        var direction;
+        var direction = null;
         if (next.indexOf(',') >= 0) {
           var condOpt = next.split(',');
           next = condOpt[0];
@@ -204,14 +210,12 @@ function parse(input) {
         if (i + 1 < lenS) {
           var nextSymb = flowSymbols[i + 1];
           realSymb[next] = getSymbol(nextSymb);
-          realSymb[next].direction = direction;
-          direction = undefined;
+          realSymb['direction_' + next] = direction;
+          direction = null;
         }
       }
-
     }
 
   }
-
   return chart;
 }

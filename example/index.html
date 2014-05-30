@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>flowchart.js · Playground</title>
-        <script src="http://raphaeljs.com/raphael.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="../bin/flowchart-latest.js"></script>
         <script>
 
@@ -25,6 +26,9 @@
                       'line-length': 50,
                       'text-margin': 10,
                       'font-size': 14,
+                      'font': 'normal',
+                      'font-family': 'Helvetica',
+                      'font-weight': 'normal',
                       'font-color': 'black',
                       'line-color': 'black',
                       'element-color': 'black',
@@ -39,6 +43,10 @@
                           'fill': 'yellow'
                         }
                       }
+                    });
+
+                    $('[id^=sub1]').click(function(){
+                      alert('info here');
                     });
                 })();
 
@@ -55,9 +63,9 @@ cond=>condition: Yes
 or No?:>http://www.google.com
 io=>inputoutput: catch something...
 
-st->op1->cond
+st->op1(right)->cond
 cond(yes, right)->io->e
-cond(no)->sub1->op1
+cond(no)->sub1(left)->op1
         </textarea></div>
         <div><button id="run" type="button">Run</button></div>
         <div id="canvas"></div>
